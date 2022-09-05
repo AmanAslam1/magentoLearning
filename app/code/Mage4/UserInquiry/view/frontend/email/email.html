@@ -1,0 +1,50 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject "Inquiry Data" @-->
+<!--@vars {
+"var data.comment":"Comment",
+"var data.email":"Sender Email",
+"var data.name":"Sender Name",
+"var data.telephone":"Sender Telephone"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table class="message-details">
+    <tr>
+        <td><strong>{{trans
+            "Name : %name"
+            name=$name
+            }}</strong></td>
+    </tr>
+    <tr>
+        <td><strong>{{trans
+            "Email : %contact_email"
+            contact_email=$contact_email
+            }}</strong></td>
+    </tr>
+<!--    <tr>-->
+        <td><strong>{{trans
+            "Date of Birth : %dob"
+            dob=$dob
+            }}</strong></td>
+    </tr>
+    <tr>
+        <td><strong>{{trans
+            "Activities : %activities"
+            activities=$activities
+            }}</strong></td>
+    </tr>
+    <tr>
+        <td><strong>{{trans
+            "Occupation : %occupation"
+            occupation=$occupation
+            }}</strong></td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

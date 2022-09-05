@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mage4_Slider::slider" title="Slider" module="Mage4_Slider" sortOrder="50" resource="Mage4_Slider::slider"/>
+        <add id="Mage4_Slider::slider_manage" title="Slider Manager" module="Mage4_Slider" sortOrder="10" parent="Mage4_Slider::slider" action="slideradmin/slider" resource="Mage4_Slider::slider"/>
+    </menu>
+</config>

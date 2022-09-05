@@ -1,0 +1,5 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch_checkout_index_index">
+        <observer name="Mage4_UserInquiry_Form_before_checkout" instance="Mage4\UserInquiry\Observer\Redirect" />
+    </event>
+</config>

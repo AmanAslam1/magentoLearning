@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="scandiweb_slider_slider_collection_load_after">
+        <observer name="pq_cc_slider" instance="ScandiPWA\Cache\Observer\Response\TagEntityResponse"/>
+    </event>
+    <event name="scandiweb_slider_slider_save_after">
+        <observer name="pq_cc_slider" instance="ScandiPWA\Cache\Observer\FlushVarnishObserver"/>
+    </event>
+    <event name="scandiweb_slider_slide_collection_load_after">
+        <observer name="pq_cc_slide" instance="ScandiPWA\Cache\Observer\Response\TagEntityResponse"/>
+    </event>
+    <event name="scandiweb_slider_slide_save_after">
+        <observer name="pq_cc_slide" instance="ScandiPWA\Cache\Observer\FlushVarnishObserver"/>
+    </event>
+</config>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+
+            <add id="Mage4_Banner::parent"
+                 title="Banners"
+                 module="Mage4_Banner" sortOrder="100"
+                 resource="Mage4_Banner::parent" parent="Magento_Backend::content" />
+
+            <add id="Mage4_Banner::index"
+                 title="Sliders"
+                 module="Mage4_Banner" sortOrder="10"
+                 resource="Mage4_Banner::index"
+                 parent="Mage4_Banner::parent"
+                 action="slider"/>
+</menu>
+</config>
+
+
+
+

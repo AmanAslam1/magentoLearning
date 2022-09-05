@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mage4_UserInquiry::inquiry" title="Mage4"
+             module="Mage4_UserInquiry" resource="Mage4_UserInquiry::inquiry"
+             translate="title" sortOrder="900" action="inquiry"/>
+    </menu>
+</config>
+
+
+
+
