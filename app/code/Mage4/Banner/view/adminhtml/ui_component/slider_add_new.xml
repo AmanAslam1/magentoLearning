@@ -6,7 +6,7 @@
             <item name="provider" xsi:type="string">slider_add_new.slider_add_new_data_source</item>
             <item name="deps" xsi:type="string">slider_add_new.slider_add_new_data_source</item>
         </item>
-        <item name="label" xsi:type="string" translate="true">Slider Information</item>
+        <item name="label" xsi:type="string" translate="true">Slider Configuration</item>
         <item name="layout" xsi:type="array">
             <item name="type" xsi:type="string">tabs</item>
             <item name="navContainerName" xsi:type="string">left</item>
@@ -16,7 +16,7 @@
                 <item name="name" xsi:type="string">save</item>
                 <item name="label" xsi:type="string" translate="true">Save Slider</item>
                 <item name="class" xsi:type="string">primary</item>
-                <item name="url" xsi:type="string">*/index/save</item>
+                <item name="url" xsi:type="string">*/index/slidersave</item>
             </item>
             <item name="back" xsi:type="array">
                 <item name="name" xsi:type="string">back</item>
@@ -47,11 +47,11 @@
             <argument name="primaryFieldName" xsi:type="string">id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="collectionFactory" xsi:type="object">
-                Mage4\Banner\Model\ResourceModel\Data\CollectionFactory
+                Mage4\Banner\Model\ResourceModel\Slider\CollectionFactory
             </argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="submit_url" xsi:type="url" path="slider/index/save"/>
+                    <item name="submit_url" xsi:type="url" path="slider/index/slidersave"/>
                 </item>
             </argument>
         </argument>
@@ -70,6 +70,7 @@
         <field name="id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">ID</item>
                     <item name="visible" xsi:type="boolean">false</item>
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
@@ -79,7 +80,7 @@
                 </item>
             </argument>
         </field>
-        <field name="slider">
+        <field name="sliderTitle">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="label" xsi:type="string" translate="true">Slider Title</item>
@@ -98,10 +99,6 @@
                     <item name="dataType" xsi:type="string">boolean</item>
                     <item name="label" translate="true" xsi:type="string">Status</item>
                     <item name="formElement" xsi:type="string">select</item>
-                    <item name="caption" xsi:type="string">--Please Select--</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
                     <item name="default" xsi:type="number">0</item>
                 </item>
             </argument>
@@ -111,234 +108,129 @@
                 <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Enabledisable</item>
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">boolean</item>
-                    <item name="label" translate="true" xsi:type="string">Status</item>
+                    <item name="label" translate="true" xsi:type="string">Show Navigation</item>
+                    <item name="notice" xsi:type="string">If Enabled, will show previous and next slide buttons</item>
                     <item name="formElement" xsi:type="string">select</item>
-                    <item name="caption" xsi:type="string">--Please Select--</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
                     <item name="default" xsi:type="number">0</item>
                 </item>
             </argument>
         </field>
-        <field name="tatus">
+        <field name="pagination">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Enabledisable</item>
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">boolean</item>
-                    <item name="label" translate="true" xsi:type="string">Status</item>
+                    <item name="label" translate="true" xsi:type="string">Show Paginaton</item>
+                    <item name="notice" xsi:type="string">If Enabled, will show menu with button for each slides</item>
                     <item name="formElement" xsi:type="string">select</item>
-                    <item name="caption" xsi:type="string">--Please Select--</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
                     <item name="default" xsi:type="number">0</item>
                 </item>
             </argument>
         </field>
-<!--        <field name="status">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="dataType" xsi:type="string">boolean</item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">Enable Banner</item>-->
-<!--                    <item name="formElement" xsi:type="string">checkbox</item>-->
-<!--                    <item name="source" xsi:type="string">banner</item>-->
-<!--                    <item name="dataScope" xsi:type="string">status</item>-->
-<!--                    <item name="prefer" xsi:type="string">toggle</item>-->
-<!--                    <item name="valueMap" xsi:type="array">-->
-<!--                        <item name="true" xsi:type="number">1</item>-->
-<!--                        <item name="false" xsi:type="number">0</item>-->
-<!--                    </item>-->
-<!--                    <item name="default" xsi:type="number">1</item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </field>-->
-<!--        <field name="store">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="options" xsi:type="object">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</item>-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="dataType" xsi:type="string">text</item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">Store View</item>-->
-<!--                    <item name="formElement" xsi:type="string">multiselect</item>-->
-<!--                    <item name="source" xsi:type="string">banner</item>-->
-<!--                    <item name="dataScope" xsi:type="string">store_id</item>-->
-<!--                    <item name="default" xsi:type="string">0</item>-->
-<!--                    <item name="validation" xsi:type="array">-->
-<!--                        <item name="required-entry" xsi:type="boolean">true</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </field>-->
-<!--        <field name="start">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="label" xsi:type="string" translate="true">Start Date</item>-->
-<!--                    <item name="formElement" xsi:type="string">date</item>-->
-<!--                    <item name="dataType" xsi:type="string">date</item>-->
-<!--                    <item name="validation" xsi:type="array">-->
-<!--                        <item name="required-entry" xsi:type="boolean">true</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </field>-->
-<!--        <field name="end">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="label" xsi:type="string" translate="true">End Date</item>-->
-<!--                    <item name="formElement" xsi:type="string">date</item>-->
-<!--                    <item name="dataType" xsi:type="string">date</item>-->
-<!--                    <item name="validation" xsi:type="array">-->
-<!--                        <item name="required-entry" xsi:type="boolean">true</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </field>-->
-<!--        <field name="position">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="label" xsi:type="string" translate="true">Position</item>-->
-<!--                    <item name="formElement" xsi:type="string">input</item>-->
-<!--                    <item name="dataType" xsi:type="string">int</item>-->
-<!--                    <item name="validation" xsi:type="array">-->
-<!--                        <item name="required-entry" xsi:type="boolean">true</item>-->
-<!--                        <item name="validate-digits" xsi:type="boolean">true</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </field>-->
-<!--        <field name="mobileImage">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="dataType" xsi:type="string">string</item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">Mobile Image</item>-->
-<!--                    <item name="formElement" xsi:type="string">imageUploader</item>-->
-<!--                    <item name="maxFileSize" xsi:type="string">2097152</item>-->
-<!--                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>-->
-<!--                    <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>-->
-<!--                    <item name="required" xsi:type="boolean">true</item>-->
-<!--                    <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png</item>-->
-<!--                    <item name="uploaderConfig" xsi:type="array">-->
-<!--                        <item name="url" xsi:type="url" path="banner/index/upload"/>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </field>-->
-
-<!--        <field name="desktopImage">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="dataType" xsi:type="string">string</item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">Desktop Image</item>-->
-<!--                    <item name="formElement" xsi:type="string">imageUploader</item>-->
-<!--                    <item name="maxFileSize" xsi:type="string">2097152</item>-->
-<!--                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>-->
-<!--                    <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>-->
-<!--                    <item name="required" xsi:type="boolean">true</item>-->
-<!--                    <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png</item>-->
-<!--                    <item name="uploaderConfig" xsi:type="array">-->
-<!--                        <item name="url" xsi:type="url" path="banner/index/upload"/>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </field>-->
-<!--        <field name="url">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="dataType" xsi:type="string">text</item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">URL Link</item>-->
-<!--                    <item name="formElement" xsi:type="string">input</item>-->
-<!--                    <item name="source" xsi:type="string">banner</item>-->
-<!--                    <item name="dataScope" xsi:type="string">url</item>-->
-<!--                    <item name="validation" xsi:type="array">-->
-<!--                        <item name="validate-url" xsi:type="boolean">true</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </field>-->
+        <field name="autoplay">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Enabledisable</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="label" translate="true" xsi:type="string">Autoplay</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+        </field>
+        <field name="slideBy">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Number of slides to scroll</item>
+                    <item name="notice" xsi:type="string">Default - 1, Number of slides to be scrolled at the same time. E.g. if you display 2 slides simultaneously you would want to change both or only 1 of them.</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="comment" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </field>
+        <field name="slideView">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Number of slides to view</item>
+                    <item name="notice" xsi:type="string">Default - 1, Number of slides displayed simultaneously. useful for brand logos carousels, where you want to display more logos at the same time.</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </field>
+        <field name="position">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Position</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </field>
     </fieldset>
 
-    <fieldset name="slide">
+    <fieldset name="mobileView">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">Slide</item>
+                <item name="label" xsi:type="string" translate="true">Mobile view config</item>
             </item>
         </argument>
-        <field name="id">
+        <field name="mNavStatus">
             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Enabledisable</item>
                 <item name="config" xsi:type="array">
-                    <item name="visible" xsi:type="boolean">false</item>
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        <field name="name">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Name</item>
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        <field name="dob">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Date of Birth</item>
-                    <item name="formElement" xsi:type="string">date</item>
-                    <item name="dataType" xsi:type="string">date</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                </item>
-            </argument>
-        </field>
-
-        <field name="occupation">
-            <argument name="data" xsi:type="array">
-                <!--                <item name="options" xsi:type="object">Mage4\Banner\Model\Source\OccupationOptions</item>-->
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" translate="true" xsi:type="string">Occupation</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="label" translate="true" xsi:type="string">Show Navigation</item>
+                    <item name="notice" xsi:type="string">If Enabled, will show previous and next slide buttons for Mobile</item>
                     <item name="formElement" xsi:type="string">select</item>
-                    <item name="caption" xsi:type="string">--Please Select--</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
+                    <item name="default" xsi:type="number">0</item>
                 </item>
             </argument>
         </field>
-        <field name="activities">
+        <field name="mPagination">
             <argument name="data" xsi:type="array">
-                <!--                <item name="options" xsi:type="object">Mage4\Banner\Model\Source\ActivitiesOptions</item>-->
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Enabledisable</item>
                 <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" translate="true" xsi:type="string">Activity</item>
-                    <item name="formElement" xsi:type="string">multiselect</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="label" translate="true" xsi:type="string">Show Paginaton</item>
+                    <item name="notice" xsi:type="string">If Enabled, will show menu with button for each slide for Mobile</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="default" xsi:type="number">0</item>
                 </item>
             </argument>
         </field>
-        <field name="contact_email">
+        <field name="mAutoplay">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Enabledisable</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="label" translate="true" xsi:type="string">Autoplay</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+        </field>
+        <field name="mSlideBy">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Email</item>
+                    <item name="label" xsi:type="string" translate="true">Number of slides to scroll</item>
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="formElement" xsi:type="string">email</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                        <item name="validate-email" xsi:type="boolean">true</item>
-                    </item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="notice" xsi:type="string">Default - 1, Number of slides to be scrolled on mobile</item>
+                </item>
+            </argument>
+        </field>
+        <field name="mSlideView">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Number of slides to view</item>
+                    <item name="notice" xsi:type="string">Default - 1, Number of slides displayed simultaneously on mobile devices</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
                 </item>
             </argument>
         </field>
     </fieldset>
+
 </form>

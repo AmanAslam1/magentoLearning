@@ -19,7 +19,7 @@ class Delete extends Data
         $Id = $this->getRequest()->getParam('id');
         if ($Id) {
             try {
-                $this->dataRepository->deleteById($Id);
+                $this->sliderRepository->deleteById($Id);
                 $this->messageManager->addSuccessMessage(__('The data has been deleted.'));
                 $resultRedirect->setPath('slider/index/index');
                 return $resultRedirect;

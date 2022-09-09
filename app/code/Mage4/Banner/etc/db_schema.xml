@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mage4_slider" resource="default" engine="innodb" comment="Banner Slider Table">
+        <column xsi:type="smallint" name="id" padding="7" nullable="false" identity="true" comment="ID" />
+        <column xsi:type="varchar" name="sliderTitle" length="255" nullable="false" comment="Slider Title" />
+        <column xsi:type="boolean" name="sliderStatus" nullable="false" comment="Slider Status" />
+        <column xsi:type="boolean" name="navStatus" nullable="true" comment="Nav Status" />
+        <column xsi:type="boolean" name="pagination" nullable="true" comment="Pagination" />
+        <column xsi:type="boolean" name="autoplay" nullable="true" comment="Autoplay Status" />
+        <column xsi:type="bigint" name="slideBy" nullable="true" comment="Slide per Scroll" />
+        <column xsi:type="bigint" name="slideView" nullable="true" comment="Slider per view" />
+        <column xsi:type="boolean" name="mNavStatus" nullable="true" comment="Mobile Nav Status" />
+        <column xsi:type="boolean" name="mPagination" nullable="true" comment="Mobile Pagination" />
+        <column xsi:type="boolean" name="mAutoplay" nullable="true" comment="Mobile Autoplay Status" />
+        <column xsi:type="bigint" name="mSlideBy" nullable="true" comment="Mobile Slide per Scroll" />
+        <column xsi:type="bigint" name="mSlideView" nullable="true" comment="Mobile Slider per view" />
+        <column xsi:type="bigint" name="position" nullable="true" comment="Position" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id" />
+        </constraint>
+    </table>
+</schema>

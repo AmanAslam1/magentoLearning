@@ -7,6 +7,7 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Backend\Model\View\Result\ForwardFactory;
+use Mage4\Banner\Api\SliderRepositoryInterface;
 
 abstract class Data extends Action
 {
@@ -23,6 +24,13 @@ abstract class Data extends Action
      * @var Registry
      */
     protected $coreRegistry;
+
+    /**
+     * Slider repository
+     *
+     * @var SliderRepositoryInterface
+     */
+    protected $sliderRepository;
 
     /**
      * Result Page Factory
@@ -42,17 +50,20 @@ abstract class Data extends Action
      * Data constructor.
      *
      * @param Registry $registry
+     * @param SliderRepositoryInterface $sliderRepository
      * @param PageFactory $resultPageFactory
      * @param ForwardFactory $resultForwardFactory
      * @param Context $context
      */
     public function __construct(
         Registry                $registry,
+        SliderRepositoryInterface $sliderRepository,
         PageFactory             $resultPageFactory,
         ForwardFactory          $resultForwardFactory,
         Context                 $context
     ) {
         $this->coreRegistry = $registry;
+        $this->sliderRepository = $sliderRepository;
         $this->resultPageFactory = $resultPageFactory;
         $this->resultForwardFactory = $resultForwardFactory;
         parent::__construct($context);

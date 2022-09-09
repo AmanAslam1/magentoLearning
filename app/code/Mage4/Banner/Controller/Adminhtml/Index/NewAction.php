@@ -2,13 +2,19 @@
 
 namespace Mage4\Banner\Controller\Adminhtml\Index;
 
-use Magento\Backend\App\Action;
-use Magento\Framework\Controller\ResultFactory;
+use Mage4\Banner\Controller\Adminhtml\Data;
+use Magento\Backend\Model\View\Result\Forward;
 
-class NewAction extends Action
+class NewAction extends Data
 {
+    /**
+     * Forward to edit
+     *
+     * @return Forward
+     */
     public function execute()
     {
-        return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        $resultForward = $this->resultForwardFactory->create();
+        return $resultForward->forward('edit');
     }
 }

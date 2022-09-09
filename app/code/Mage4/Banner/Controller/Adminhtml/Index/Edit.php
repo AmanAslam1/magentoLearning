@@ -13,7 +13,7 @@ class Edit extends Data
     {
         $Id = $this->getRequest()->getParam('id');
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Mage4_Banner::banner')
+        $resultPage->setActiveMenu('Mage4_Banner::index')
             ->addBreadcrumb(__('Data'), __('Data'))
             ->addBreadcrumb(__('Manage Data'), __('Manage Data'));
 
@@ -23,7 +23,7 @@ class Edit extends Data
         } else {
             $resultPage->addBreadcrumb(__('Edit Data'), __('Edit Data'));
             $resultPage->getConfig()->getTitle()->prepend(
-                $this->dataRepository->getById($Id)->getName()
+                $this->sliderRepository->getById($Id)->getName()
             );
         }
         return $resultPage;

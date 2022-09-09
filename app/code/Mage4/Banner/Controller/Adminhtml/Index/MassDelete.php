@@ -2,17 +2,17 @@
 
 namespace Mage4\Banner\Controller\Adminhtml\Index;
 
-use Mage4\Banner\Model\Banner;
+use Mage4\Banner\Model\Slider;
 
 class MassDelete extends MassAction
 {
     /**
-     * @param Banner $data
+     * @param Slider $data
      * @return $this
      */
-    protected function massAction(Banner $data)
+    protected function massAction(Slider $data)
     {
-        $this->dataRepository->delete($data);
+        $this->sliderRepository->delete($data);
         return $this;
     }
 }

@@ -7,10 +7,11 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Backend\Model\View\Result\ForwardFactory;
+use Mage4\Banner\Api\SliderRepositoryInterface;
 use Magento\Ui\Component\MassAction\Filter;
 use Mage4\Banner\Controller\Adminhtml\Data;
-use Mage4\Banner\Model\Banner as DataModel;
-use Mage4\Banner\Model\ResourceModel\Data\CollectionFactory;
+use Mage4\Banner\Model\Slider as SliderModel;
+use Mage4\Banner\Model\ResourceModel\Slider\CollectionFactory;
 
 abstract class MassAction extends Data
 {
@@ -23,6 +24,11 @@ abstract class MassAction extends Data
      * @var CollectionFactory
      */
     protected $collectionFactory;
+
+    /**
+     * @var SliderRepositoryInterface
+     */
+    protected $sliderRepository;
 
     /**
      * @var ForwardFactory
@@ -44,6 +50,7 @@ abstract class MassAction extends Data
      *
      * @param Filter $filter
      * @param Registry $registry
+     * @param SliderRepositoryInterface $sliderRepository
      * @param PageFactory $resultPageFactory
      * @param Context $context
      * @param CollectionFactory $collectionFactory
@@ -55,6 +62,7 @@ abstract class MassAction extends Data
         Filter $filter,
         Registry $registry,
         PageFactory $resultPageFactory,
+        SliderRepositoryInterface $sliderRepository,
         Context $context,
         CollectionFactory $collectionFactory,
         ForwardFactory $resultForwardFactory,
@@ -62,21 +70,22 @@ abstract class MassAction extends Data
         $errorMessage
     ) {
         $this->filter               = $filter;
+        $this->sliderRepository     = $sliderRepository;
         $this->collectionFactory    = $collectionFactory;
         $this->resultForwardFactory = $resultForwardFactory;
         $this->successMessage       = $successMessage;
         $this->errorMessage         = $errorMessage;
-        parent::__construct($registry, $resultPageFactory, $resultForwardFactory, $context);
+        parent::__construct($registry, $sliderRepository, $resultPageFactory, $resultForwardFactory, $context);
     }
 
     /**
-     * @param DataModel $data
+     * @param SliderModel $data
      * @return mixed
      */
-    abstract protected function massAction(DataModel $data);
+    abstract protected function massAction(SliderModel $data);
 
     /**
-     * @return \Magento\Framework\Controller\Result\Redirect
+     * @return \Magento\Framework\Controller\Result\Redirect;
      */
     public function execute()
     {
